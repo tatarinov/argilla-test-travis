@@ -18,7 +18,7 @@ services:
 install:
   - cd .. && git clone https://github.com/yiisoft/yii.git yii
   - cd yii && git checkout 2e702fa83a64b6417addebf485ab6af9dabc1dfe
-  - cd ../argilla
+  - cd ../argilla-test-travis
   - wget http://www.phing.info/get/phing-latest.phar
   - chmod +x phing-latest.phar
   - sudo mv phing-latest.phar phing.phar
