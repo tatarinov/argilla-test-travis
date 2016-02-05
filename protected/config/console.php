@@ -1,4 +1,7 @@
 <?php
+mb_internal_encoding("UTF-8");
+mb_http_output("UTF-8");
+
 $frontend = realpath(__DIR__.'/..');
 $backend = realpath(__DIR__.'/../../backend/protected');
 
@@ -10,6 +13,11 @@ $config = array(
   'aliases' => array(
     'backend' => $backend,
     'frontend' => $frontend,
+  ),
+
+  'import' => array(
+    'frontend.components.cli.*',
+    'frontend.commands.components.*'
   ),
 
   'components' => array(

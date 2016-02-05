@@ -62,11 +62,24 @@ return array_merge_recursive(array(
     'frontend.widgets.list_view.*',
     'frontend.widgets.basket.*',
     'frontend.forms.FormLayouts',
+
+    'ext.eoauth.*',
+    'ext.eoauth.lib.*',
+    //'extensions.lightopenid.*',
+    'ext.eauth.*',
+    'ext.eauth.services.*',
   ),
 
   'modules' => array(),
 
   'components' => array(
+    'eauth' => array(
+      'class' => 'ext.eauth.EAuth',
+      'popup' => true,
+      'cache' => false,
+      'cacheExpire' => 0,
+      'services' => require(__DIR__.'/oauth.php'),
+    ),
 
     'db' => array_replace_recursive(require(__DIR__.'/db.php'),
       array(
@@ -129,6 +142,8 @@ return array_merge_recursive(array(
     'cache' => array(
       'class' => 'system.caching.CDummyCache',
     ),
+
+
   ),
 
   'params' => array(

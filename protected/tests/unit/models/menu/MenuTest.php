@@ -12,7 +12,6 @@ class MenuTest extends CDbTestCase
   public function testGetMenu()
   {
     $menu = Menu::model()->getMenu('top');
-    print_r($menu);
     $this->assertNotEmpty($menu);
 
     $this->assertEquals('О компании', $menu[0]['label']);

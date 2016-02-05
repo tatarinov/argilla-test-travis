@@ -13,6 +13,7 @@ Yii::import('backend.modules.product.models.behaviors.*');
  * @method static BProduct model(string $class = __CLASS__)
  *
  * @property string $id
+ * @property integer $parent
  * @property integer $position
  * @property string $url
  * @property string $name
@@ -106,7 +107,7 @@ class BProduct extends BActiveRecord
       array('name, url, articul', 'filter', 'filter' => array(Yii::app()->format, 'trim')),
       array('url', 'filter', 'filter' => array(Yii::app()->format, 'toLower')),
 
-      array('section_id', 'required'),
+      array('section_id', 'required', 'except' => BModificationBehavior::SCENARIO_MODIFICATION),
       array(implode(", ", array_keys(BProductAssignment::model()->getFields())), 'safe'),
     );
   }
