@@ -2,7 +2,8 @@ build:
     tests:
         override:
             -
-                command: phpunit --coverage-clover=build/coverage/frontend.xml protected/tests/unit/
+                command: phpunit --coverage-clover=build/coverage/frontend.xml -c protected/tests/unit/coverage.xml protected/tests/unit/
+                command: phpunit --coverage-clover=build/coverage/backend.xml -c backend/protected/tests/unit/coverage.xml backend/protected/tests/unit/
                 coverage:
-                    file: build/coverage/frontend.xml
+                    file: build/coverage/
                     format: php-clover
