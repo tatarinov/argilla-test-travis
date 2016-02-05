@@ -1,6 +1,8 @@
 <?php
 $production = __DIR__.'/protected/config/production.php';
 
+
+
 if( file_exists($production) )
 {
   error_reporting(0);
