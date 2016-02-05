@@ -36,6 +36,7 @@ script:
       phpunit --coverage-clover=build/coverage/backend.xml -c backend/protected/tests/coverage.xml backend/protected/tests/unit/;
     fi
 
+
 after_script:
   - if [ $(phpenv version-name) = "5.6" ]; then
      wget https://scrutinizer-ci.com/ocular.phar;
