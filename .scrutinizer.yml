@@ -2,7 +2,7 @@ build:
     tests:
         override:
             -
-                command: phpunit phpunit --coverage-clover=build/coverage/frontend.xml unit/
+                command: phpunit --coverage-clover=build/coverage/frontend.xml unit/
                 coverage:
                     file: build/coverage/frontend.xml
                     format: php-clover
