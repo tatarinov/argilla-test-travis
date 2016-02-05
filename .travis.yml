@@ -28,12 +28,17 @@ before_script:
   - php phing.phar bootstrap -DdbName=argilla -DdbTablePrefix=argilla_ -DdbUser=prog -DdbPassword=123 -Dconfirm=y -DconfirmTest=y
 
 script:
-  - phpunit --coverage-clover=build/coverage/frontend.xml -c protected/tests/coverage.xml protected/tests/unit/
-  - phpunit --coverage-clover=build/coverage/backend.xml -c backend/protected/tests/coverage.xml backend/protected/tests/unit/
   - phpunit -c backend/protected/tests/phpunit.xml backend/protected/tests/unit/
   - phpunit -c protected/tests/phpunit.xml protected/tests/unit/
 
+  - if [ $(phpenv version-name) = "5.6" ]; then
+      phpunit --coverage-clover=build/coverage/frontend.xml -c protected/tests/coverage.xml protected/tests/unit/;
+      phpunit --coverage-clover=build/coverage/backend.xml -c backend/protected/tests/coverage.xml backend/protected/tests/unit/;
+    fi
+
 after_script:
-    - wget https://scrutinizer-ci.com/ocular.phar
-    - php ocular.phar code-coverage:upload --format=php-clover build/coverage/frontend.xml
-    - php ocular.phar code-coverage:upload --format=php-clover build/coverage/backend.xml
+  - if [ $(phpenv version-name) = "5.6" ]; then
+     wget https://scrutinizer-ci.com/ocular.phar;
+     php ocular.phar code-coverage:upload --format=php-clover build/coverage/frontend.xml;
+     php ocular.phar code-coverage:upload --format=php-clover build/coverage/backend.xml;
+    fi
